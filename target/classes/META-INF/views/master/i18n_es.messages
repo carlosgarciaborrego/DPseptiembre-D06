@@ -65,16 +65,6 @@ master.menu.authenticated.listChallenge = Listar Retos
 master.menu.authenticated.listInvestRound = Listar Rondas de Inversión
 
 
-# master.menu.provider ########################################################
-
-master.menu.provider = Proveedor
-master.menu.provider.favourite-link = Enlace favorito 
-
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumidor
-master.menu.consumer.favourite-link = Enlace favorito
-
 # master.menu.entrepreneur ##########################################################
 master.menu.entrepreneur = Empresario
 master.menu.entrepreneur.investRound = Listar Rondas de Inversión
