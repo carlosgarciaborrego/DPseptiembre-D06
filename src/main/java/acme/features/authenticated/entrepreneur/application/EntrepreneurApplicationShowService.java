@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.applications.Application;
+import acme.entities.investmentRounds.InvestmentRound;
 import acme.entities.roles.Entrepreneur;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -20,8 +22,21 @@ public class EntrepreneurApplicationShowService implements AbstractShowService<E
 	@Override
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;
+		boolean result;
+		int appId;
+		Application app;
+		InvestmentRound investmentRound;
+		Entrepreneur entrepreneur;
+		Principal principal;
 
-		return true;
+		appId = request.getModel().getInteger("id");
+		app = this.repository.findOneById(appId);
+		investmentRound = app.getInvestmentRound();
+		entrepreneur = investmentRound.getEntrepreneur();
+		principal = request.getPrincipal();
+
+		result = entrepreneur.getUserAccount().getId() == principal.getAccountId();
+		return result;
 	}
 
 	@Override
